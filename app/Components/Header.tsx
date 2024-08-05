@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Header() {
   return (
-    <div className="border dmsansfont bg-white py-3 px-7 top-12 relative  flex justify-between items-center  border-[#F24E80] rounded-full mx-32 ">
+    <div className="border dmsansfont bg-white bg-opacity-80 py-3 px-7 top-12 relative  flex justify-between items-center  border-[#F24E80] rounded-full mx-32 ">
       <div>
         <p className="text-[#F24E80] text-3xl dmsansfont font-sans">
           CryptoPyar
