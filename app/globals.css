@@ -5,3 +5,12 @@
 .playfairfont {
   font-family: "Playfair Display";
 }
+
+.dmsansfont {
+  font-family: "DM Sans";
+}
+
+.bgimg {
+  background-size: full;
+  margin: 0px 100px;
+}
