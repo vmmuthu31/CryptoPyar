@@ -132,7 +132,7 @@ export default function Home() {
                 </p>
                 <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
                   We use decentralized identity verification methods like Anon
-                  Aadhaar to confirm users' authenticity without compromising
+                  Aadhaar to confirm users authenticity without compromising
                   personal information.
                 </p>
               </div>
