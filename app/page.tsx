@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <div className="bg-[url('./assets/bg.svg')] bgimg absolute bg-cover  min-h-screen bg-no-repeat ">
         <Header />
-        <div className="relative">
+        <div className="relative pb-20">
           <div className="flex mx-20 mt-24 justify-between">
             <div className="mt-20 ">
               <p className="text-[#F24E80]  border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm ">
@@ -104,6 +104,70 @@ export default function Home() {
                 <p className="text-opacity-90 text-[#565656] text-sm w-72">
                   Blockchain technology ensures transparency and security in
                   every interaction.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#FFF9FB] mx-16 px-20 py-10 rounded-xl">
+            <p className="text-[#F24E80] playfairfont italic text-center text-5xl mt-5">
+              How it works?
+            </p>
+            <p className="text-[#565656] text-center px-[100px] pt-5 dmsansfont">
+              Verify with Anon Aadhaar, access data via The Graph, and manage
+              tokens with Diamante. Enjoy secure and private interactions
+              powered by blockchain.
+            </p>
+            <div className="flex gap-10 mt-5 justify-center">
+              <div className="flex flex-col rounded-2xl bg-white">
+                <Image
+                  src={require("./assets/card1.svg")}
+                  alt="heart"
+                  className=" rounded-t-2xl w-96 h-60"
+                />
+                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
+                  Step 1
+                </p>
+                <p className="mt-3 font-extralight px-4">
+                  On-Chain Identity Verification
+                </p>
+                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
+                  We use decentralized identity verification methods like Anon
+                  Aadhaar to confirm users' authenticity without compromising
+                  personal information.
+                </p>
+              </div>
+              <div className="flex flex-col rounded-2xl bg-white">
+                <Image
+                  src={require("./assets/card2.svg")}
+                  alt="heart"
+                  className="w-96 rounded-t-2xl h-60"
+                />
+                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
+                  Step 2
+                </p>
+                <p className="mt-3 font-extralight px-4">Token-Gated Access </p>
+                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
+                  Gain exclusive access to the app through token gating,
+                  ensuring that only verified, trusted, and like-minded users
+                  can interact within our secure and private community.
+                </p>
+              </div>
+              <div className="flex flex-col rounded-2xl bg-white">
+                <Image
+                  src={require("./assets/card3.svg")}
+                  alt="heart"
+                  className="w-96 rounded-t-2xl h-60"
+                />
+                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
+                  Step 3
+                </p>
+                <p className="mt-2 font-extralight px-4">
+                  Private Matching Algorithms{" "}
+                </p>
+                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
+                  Our matching algorithm computes the reasons for a match
+                  without leaking any data, ensuring your preferences and
+                  conversations remain private.
                 </p>
               </div>
             </div>
