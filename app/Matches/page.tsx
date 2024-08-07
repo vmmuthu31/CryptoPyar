@@ -10,7 +10,7 @@ export default function page() {
           <div>
             <SideBar />
           </div>
-          <div>//Content</div>
+          <div></div>
           <Suggestions />{" "}
         </div>
       </div>

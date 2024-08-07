@@ -8,7 +8,7 @@ export default function page() {
       <div className="bg-[url('/bg3.svg')] bgimg3 bg-cover min-h-screen bg-no-repeat">
         <div className="flex mx-14 pl-12 py-20 pt-14 justify-between">
           <SideBar />
-          <div>//Content</div>
+          <div></div>
           <Suggestions />{" "}
         </div>
       </div>
