@@ -130,7 +130,7 @@ const SignUp = () => {
               {currentStep === 1 && (
                 <>
                   <p className="text-[#333333] font-normal pt-4">
-                    Let's Get to Know Each Other
+                    Let&apos;s Get to Know Each Other
                   </p>
                   <input
                     {...methods.register("name")}
