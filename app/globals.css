@@ -14,3 +14,65 @@
   background-size: full;
   margin: 0px 100px;
 }
+
+.shadow-custom {
+  box-shadow: 0 4px 8px rgba(242, 78, 128, 0.5);
+}
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: slide 10s linear infinite;
+}
+
+.marquee-content-right {
+  display: flex;
+  white-space: nowrap;
+  animation: slide-right 10s linear infinite;
+}
+
+.marquee-content p {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+}
+
+.marquee::before {
+  left: 0;
+}
+
+.marquee::after {
+  right: 0;
+}

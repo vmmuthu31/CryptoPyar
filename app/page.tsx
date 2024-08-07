@@ -1,27 +1,50 @@
+"use client";
 import Image from "next/image";
-import Head from "next/head";
 import Header from "./Components/Header";
+import { JobRolesMarquee } from "./Components/JobRolesMarquee";
+import { StepCard } from "./Components/StepCard";
+
+const jobRoles = [
+  "Privacy-First Dating",
+  "On-Chain Privacy",
+  "Token-Gated Access",
+  "Verified Users Only",
+  "Decentralized Identity",
+  "Token-Gated Access",
+];
+
+const jobRoles1 = [
+  "Exclusive Connections",
+  "Encrypted Data",
+  "Private Conversations",
+  "Seamless Verification",
+  "Next-Gen Dating",
+  "Exclusive Connections",
+];
+
+const duplicatedJobRoles = [...jobRoles, ...jobRoles, ...jobRoles];
+const duplicatedJobRoles1 = [...jobRoles1, ...jobRoles1, ...jobRoles1];
 
 export default function Home() {
   return (
     <main>
-      <div className="bg-[url('./assets/bg.svg')] bgimg absolute bg-cover  min-h-screen bg-no-repeat ">
+      <div className="bg-[url('./assets/bg.svg')] bgimg absolute bg-cover min-h-screen bg-no-repeat">
         <Header />
         <div className="relative pb-20">
           <div className="flex mx-20 mt-24 justify-between">
-            <div className="mt-20 ">
-              <p className="text-[#F24E80]  border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm ">
+            <div className="mt-20">
+              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm">
                 Secure Connections
               </p>
             </div>
             <div>
-              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm ">
-                Token-Gated Access{" "}
+              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm">
+                Token-Gated Access
               </p>
             </div>
           </div>
           <div className="flex items-center mt-5 justify-center gap-3">
-            <p className="playfairfont italic  text-[#F24E80] text-center text-5xl">
+            <p className="playfairfont italic text-[#F24E80] text-center text-5xl">
               Find Your Perfect Match,
             </p>
             <Image src={require("./assets/star.svg")} alt="heart" />
@@ -36,8 +59,8 @@ export default function Home() {
             Genuine Connections.
           </p>
           <div className="flex justify-center items-start">
-            <button className="text-white  mt-5 drop-shadow-xl bg-[#F24E80] px-7  py-4 rounded-full">
-              Find Love{" "}
+            <button className="text-white mt-5 drop-shadow-xl bg-[#F24E80] px-7 py-4 rounded-full">
+              Find Love
             </button>
             <Image
               src={require("./assets/threeline.svg")}
@@ -47,13 +70,13 @@ export default function Home() {
           </div>
           <div className="flex pl-72 pr-44 mt-2 justify-between">
             <div>
-              <p className="text-[#F24E80]  border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm ">
-                Blockchain Privacy{" "}
+              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm">
+                Blockchain Privacy
               </p>
             </div>
-            <div className="mt-16 ">
-              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm ">
-                Verified Matches{" "}
+            <div className="mt-16">
+              <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm">
+                Verified Matches
               </p>
             </div>
           </div>
@@ -64,9 +87,8 @@ export default function Home() {
             <p className="text-[#565656] text-center px-[300px] pt-5 dmsansfont">
               Enjoy unmatched privacy with blockchain security, encrypted data,
               and decentralized identity verification. Find real connections
-              with our privacy-first matching
+              with our privacy-first matching.
             </p>
-
             <div className="mx-20 py-10 gap-10 flex justify-center">
               <div className="flex flex-col gap-2">
                 <Image
@@ -108,67 +130,39 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#FFF9FB] mx-16 px-20 py-10 rounded-xl">
+          <div className="bg-[#FFF9FB] mx-16 px-20 py-10 shadow-custom rounded-xl">
             <p className="text-[#F24E80] playfairfont italic text-center text-5xl mt-5">
               How it works?
             </p>
             <p className="text-[#565656] text-center px-[100px] pt-5 dmsansfont">
               Verify with Anon Aadhaar, access data via The Graph, and manage
-              tokens with Ethereum. Enjoy secure and private interactions
-              powered by blockchain.
+              tokens with Diamante, Nillion, Aptos. Enjoy secure and private
+              interactions powered by blockchain.
             </p>
             <div className="flex gap-10 mt-5 justify-center">
-              <div className="flex flex-col rounded-2xl bg-white">
-                <Image
-                  src={require("./assets/card1.svg")}
-                  alt="heart"
-                  className=" rounded-t-2xl w-96 h-60"
+              <StepCard
+                title="On-Chain Identity Verification"
+                description="We use decentralized identity verification methods like Anon Aadhaar to confirm users' authenticity without compromising personal information."
+                imageSrc={require("./assets/card1.svg")}
+              />
+              <StepCard
+                title="Token-Gated Access"
+                description="Gain exclusive access to the app through token gating, ensuring that only verified, trusted, and like-minded users can interact within our secure and private community."
+                imageSrc={require("./assets/card2.svg")}
+              />
+              <StepCard
+                title="Private Matching Algorithms"
+                description="Our matching algorithm computes the reasons for a match without leaking any data, ensuring your preferences and conversations remain private."
+                imageSrc={require("./assets/card3.svg")}
+              />
+            </div>
+            <div className="my-8 max-w-5xl mx-1">
+              <JobRolesMarquee roles={duplicatedJobRoles} direction="left" />
+              <div className="relative my-10 overflow-hidden marquee">
+                <JobRolesMarquee
+                  roles={duplicatedJobRoles1}
+                  direction="right"
                 />
-                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
-                  Step 1
-                </p>
-                <p className="mt-3 font-extralight px-4">
-                  On-Chain Identity Verification
-                </p>
-                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
-                  We use decentralized identity verification methods like Anon
-                  Aadhaar to confirm users authenticity without compromising
-                  personal information.
-                </p>
-              </div>
-              <div className="flex flex-col rounded-2xl bg-white">
-                <Image
-                  src={require("./assets/card2.svg")}
-                  alt="heart"
-                  className="w-96 rounded-t-2xl h-60"
-                />
-                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
-                  Step 2
-                </p>
-                <p className="mt-3 font-extralight px-4">Token-Gated Access </p>
-                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
-                  Gain exclusive access to the app through token gating,
-                  ensuring that only verified, trusted, and like-minded users
-                  can interact within our secure and private community.
-                </p>
-              </div>
-              <div className="flex flex-col rounded-2xl bg-white">
-                <Image
-                  src={require("./assets/card3.svg")}
-                  alt="heart"
-                  className="w-96 rounded-t-2xl h-60"
-                />
-                <p className="bg-[#FFC4D6] mx-4 w-16 px-2 rounded-lg py-1 border border-[#F24E80] text-[#F24E80] text-[13px]">
-                  Step 3
-                </p>
-                <p className="mt-2 font-extralight px-4">
-                  Private Matching Algorithms{" "}
-                </p>
-                <p className="text-sm w-72 text-[#565656] dmsansfont px-4 pb-5">
-                  Our matching algorithm computes the reasons for a match
-                  without leaking any data, ensuring your preferences and
-                  conversations remain private.
-                </p>
               </div>
             </div>
           </div>
