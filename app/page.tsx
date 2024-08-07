@@ -114,7 +114,7 @@ export default function Home() {
             </p>
             <p className="text-[#565656] text-center px-[100px] pt-5 dmsansfont">
               Verify with Anon Aadhaar, access data via The Graph, and manage
-              tokens with Diamante. Enjoy secure and private interactions
+              tokens with Ethereum. Enjoy secure and private interactions
               powered by blockchain.
             </p>
             <div className="flex gap-10 mt-5 justify-center">
