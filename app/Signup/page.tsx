@@ -283,7 +283,7 @@ const SignUp = () => {
               {currentStep === 6 && (
                 <>
                   <p className="text-[#333333] font-normal pt-4">
-                    We'd love to see you. Upload a photo for your dating
+                    We&apos;d love to see you. Upload a photo for your dating
                     journey.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4 my-2">
