@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Header() {
@@ -12,9 +13,11 @@ export default function Header() {
         <p className="text-lg text-[#565656]">How it works</p>
         <p className="text-lg text-[#767676] text-opacity-50">•</p>
         <p className="text-lg text-[#565656]">Team</p>
-        <button className="text-white bg-[#F24E80] px-4 py-2 rounded-full">
-          Find Love{" "}
-        </button>
+        <Link href="/Login">
+          <button className="text-white bg-[#F24E80] px-4 py-2 rounded-full">
+            Find Love{" "}
+          </button>
+        </Link>
       </div>
     </div>
   );

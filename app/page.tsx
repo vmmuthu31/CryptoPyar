@@ -5,6 +5,7 @@ import { JobRolesMarquee } from "./Components/JobRolesMarquee";
 import { StepCard } from "./Components/StepCard";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 
 const jobRoles = [
   "Privacy-First Dating",
@@ -61,9 +62,11 @@ export default function Home() {
             Genuine Connections.
           </p>
           <div className="flex justify-center items-start">
-            <button className="text-white mt-5 drop-shadow-xl bg-[#F24E80] px-7 py-4 rounded-full">
-              Find Love
-            </button>
+            <Link href="/Login">
+              <button className="text-white mt-5 drop-shadow-xl bg-[#F24E80] px-7 py-4 rounded-full">
+                Find Love
+              </button>
+            </Link>
             <Image
               src={require("./assets/threeline.svg")}
               className="pt-5"
