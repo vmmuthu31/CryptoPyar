@@ -3,6 +3,8 @@ import Image from "next/image";
 import Header from "./Components/Header";
 import { JobRolesMarquee } from "./Components/JobRolesMarquee";
 import { StepCard } from "./Components/StepCard";
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const jobRoles = [
   "Privacy-First Dating",
@@ -28,9 +30,9 @@ const duplicatedJobRoles1 = [...jobRoles1, ...jobRoles1, ...jobRoles1];
 export default function Home() {
   return (
     <main>
-      <div className="bg-[url('./assets/bg.svg')] bgimg absolute bg-cover min-h-screen bg-no-repeat">
+      <div className="bg-[url('./assets/bg.svg')] bgimg absolute bg-cover  min-h-screen bg-no-repeat">
         <Header />
-        <div className="relative pb-20">
+        <div className="relative pb-4">
           <div className="flex mx-20 mt-24 justify-between">
             <div className="mt-20">
               <p className="text-[#F24E80] border border-[#F24E80] border-b-4 rounded-full px-4 py-2 text-sm">
@@ -89,7 +91,7 @@ export default function Home() {
               and decentralized identity verification. Find real connections
               with our privacy-first matching.
             </p>
-            <div className="mx-20 py-10 gap-10 flex justify-center">
+            <div className="mx-20 py-10 gap-10  mt-10 flex justify-center">
               <div className="flex flex-col gap-2">
                 <Image
                   src={require("./assets/privacy.svg")}
@@ -130,7 +132,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#FFF9FB] mx-16 px-20 py-10 shadow-custom rounded-xl">
+          <div className="bg-[#FFF9FB] mx-16 mt-16 px-20 py-10 shadow-custom rounded-xl">
             <p className="text-[#F24E80] playfairfont italic text-center text-5xl mt-5">
               How it works?
             </p>
@@ -164,6 +166,71 @@ export default function Home() {
                   direction="right"
                 />
               </div>
+            </div>
+          </div>
+          <div>
+            <div className=" my-28 ">
+              <div className="flex justify-center gap-80">
+                <div className="flex">
+                  <p className="w-48 text-center">
+                    Your data is fully encrypted and secure.
+                  </p>
+                  <Image src={require("./assets/arrow1.svg")} alt="arrow" />
+                </div>
+                <div className="flex">
+                  <Image src={require("./assets/arrow2.svg")} alt="arrow" />
+                  <p className="w-48 text-center">
+                    Ensures transparency and trust.{" "}
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-center mt-4">
+                <p className="playfairfont text-5xl italic text-white p-5 px-10 rounded-3xl bg-[#F24E80] text-center">
+                  Find love on CryptoPyar
+                </p>
+              </div>
+              <div className="flex justify-center mt-10 gap-40">
+                <div className="flex flex-col items-center">
+                  <Image src={require("./assets/arrow3.svg")} alt="arrow" />
+                  <p className="w-48 text-center">
+                    Only genuine, authenticated members.{" "}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <Image src={require("./assets/arrow4.svg")} alt="arrow" />
+                  <p className="w-48 text-center">
+                    Fast and reliable data access.{" "}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <Image src={require("./assets/arrow5.svg")} alt="arrow" />
+                  <p className="w-48 text-center">
+                    Safe and private identity verification.{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mx-20 mt-10">
+            <div>
+              <p className="text-7xl playfairfont text-[#F24E80] font-semibold italic">
+                CryptoPyar.
+              </p>
+              <div className="flex pt-5  justify-between ">
+                <p className="text-[#F24E80]  w-[450px] dmsansfont">
+                  Ready to Swipe Right on Privacy? Join the Future of Dating –
+                  Where Your Heart’s Safe and So Is Your Data!
+                </p>
+                <div className="flex gap-3">
+                  <FaXTwitter className="text-white bg-[#F24E80] text-4xl p-2 rounded-md" />
+                  <FaTelegramPlane className="text-white bg-[#F24E80] text-4xl p-2 rounded-md" />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center gap-10 mt-10 text-[15px] text-[#F24E80]">
+              <p>CryptoPyar © 2024 All Rights Reserved</p>
+              <p>Terms Of Use</p>
+              <p>Privacy Policy</p>
             </div>
           </div>
         </div>
