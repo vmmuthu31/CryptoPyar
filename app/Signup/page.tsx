@@ -91,7 +91,7 @@ const SignUp = () => {
     } else {
       console.log("Form data submitted: ", data);
       toast.success("Form submitted successfully!");
-      router.push("/Dashboard");
+      router.push("/Home");
     }
   };
 
