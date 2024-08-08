@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/store/Provider";
+import { AnonAadhaarProvider } from "@anon-aadhaar/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,9 @@ export default function RootLayout({
         ></link>
       </head>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <AnonAadhaarProvider>
+          <Providers>{children}</Providers>
+        </AnonAadhaarProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import logingrp from "../assets/logingrp.svg";
 import { RiWallet3Fill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
@@ -20,9 +20,16 @@ const config = getDefaultConfig({
   chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
+import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
+
 const queryClient = new QueryClient();
 
 export default function page() {
+  const [anonAadhaar] = useAnonAadhaar();
+
+  useEffect(() => {
+    console.log("Anon Aadhaar status: ", anonAadhaar.status);
+  }, [anonAadhaar]);
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
@@ -137,9 +144,11 @@ export default function page() {
                     </span>
                   </button>
                   <button className="bg-[#FFF0FD] flex justify-between items-center mt-5 text-[#F24E80] text-lg w-72 px-7 py-4 rounded-full">
-                    <FcGoogle className=" bg-white px-2 rounded-full text-4xl" />
-                    <span>Login with Google</span>
-                    <span></span>
+                    <LogInWithAnonAadhaar
+                      nullifierSeed={1234}
+                      fieldsToReveal={["revealAgeAbove18", "revealPinCode"]}
+                    />
+                    <p>{anonAadhaar?.status}</p>
                   </button>
                   <p className="pt-10 font-semibold text-[15px]">
                     Don&apos;t have an account?{" "}
