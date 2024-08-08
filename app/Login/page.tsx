@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 
 const queryClient = new QueryClient();
 
-export default function page() {
+export default function Page() {
   const [anonAadhaar] = useAnonAadhaar();
   const router = useRouter();
   useEffect(() => {
