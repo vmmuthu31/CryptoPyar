@@ -176,7 +176,7 @@ const SignUp = () => {
 
   useEffect(() => {
     console.log("Anon Aadhaar status: ", anonAadhaar.status);
-    if (anonAadhaar.status === "logged-in") {
+    if (anonAadhaar.status !== "logged-in") {
       setCurrentStep(1);
     }
   }, [anonAadhaar]);
@@ -411,18 +411,20 @@ const SignUp = () => {
                           </span>
                         ) : (
                           <>
-                            <div className="bg-[#FFF0FD] flex justify-between items-center mt-5 text-[#F24E80] text-lg w-72 px-7 py-4 rounded-full">
-                              <LogInWithAnonAadhaar
-                                nullifierSeed={1234}
-                                fieldsToReveal={[
-                                  "revealAgeAbove18",
-                                  "revealGender",
-                                  "revealState",
-                                  "revealPinCode",
-                                ]}
-                              />
-                              <p>{anonAadhaar?.status}</p>
-                            </div>
+                            <span className="flex justify-center">
+                              <div className="bg-[#FFF0FD] flex justify-between items-center mt-5 text-[#F24E80] text-lg w-72 px-7 py-4 rounded-full">
+                                <LogInWithAnonAadhaar
+                                  nullifierSeed={1234}
+                                  fieldsToReveal={[
+                                    "revealAgeAbove18",
+                                    "revealGender",
+                                    "revealState",
+                                    "revealPinCode",
+                                  ]}
+                                />
+                                <p>{anonAadhaar?.status}</p>
+                              </div>
+                            </span>
                           </>
                         )}
                       </>
