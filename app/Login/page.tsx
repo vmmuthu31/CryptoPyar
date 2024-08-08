@@ -15,34 +15,22 @@ import {
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, base } from "wagmi/chains";
+import { polygonAmoy, coreDao } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
-import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
 
 const queryClient = new QueryClient();
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "YOUR_PROJECT_ID",
-  chains: [mainnet, polygon, optimism, arbitrum, base],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  chains: [polygonAmoy, coreDao],
+  ssr: true,
 });
 
 export default function Page() {
   const selectedNetwork = useSelector((state: RootState) => state.auth.network);
-  const [anonAadhaar] = useAnonAadhaar();
   const wallets = [new PetraWallet()];
-  console.log("selected", selectedNetwork);
-
-  const router = useRouter();
-  useEffect(() => {
-    console.log("Anon Aadhaar status: ", anonAadhaar.status);
-    if (anonAadhaar.status === "logged-in") {
-      router.push("/Home");
-    }
-  }, [anonAadhaar]);
 
   return (
     <AptosWalletAdapterProvider plugins={wallets} autoConnect={false}>
@@ -178,15 +166,8 @@ export default function Page() {
                         }
                       })()}
                     </span>
-                    <button className="bg-[#FFF0FD] flex justify-between items-center mt-5 text-[#F24E80] text-lg w-72 px-7 py-4 rounded-full">
-                      <LogInWithAnonAadhaar
-                        nullifierSeed={1234}
-                        fieldsToReveal={["revealAgeAbove18", "revealState"]}
-                      />
-                      <p>{anonAadhaar?.status}</p>
-                    </button>
                     <p className="pt-10 font-semibold text-[15px]">
-                      Don't have an account?{" "}
+                      Don&apos;t have an account?{" "}
                       <Link href="/Signup">
                         <span className="text-[#F24E80] font-semibold">
                           Sign Up
