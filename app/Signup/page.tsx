@@ -302,17 +302,13 @@ const SignUp = () => {
                                             authenticationStatus ===
                                               "authenticated");
 
-                                        useEffect(() => {
-                                          if (connected) {
-                                            console.log(
-                                              "ethadd",
-                                              account.address
-                                            );
-                                            handleWalletConnect(
-                                              account.address
-                                            );
-                                          }
-                                        }, [connected]);
+                                        if (connected) {
+                                          console.log(
+                                            "ethadd",
+                                            account.address
+                                          );
+                                          handleWalletConnect(account.address);
+                                        }
 
                                         return (
                                           <>
