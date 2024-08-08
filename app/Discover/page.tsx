@@ -28,7 +28,8 @@ const users = [
   { id: 3, name: "Clara", age: 22, location: "Delhi", image: user3 },
   { id: 4, name: "Fabian", age: 24, location: "Bangalore", image: user4 },
 ];
-export default function page() {
+
+export default function Page() {
   const methods = useForm({
     defaultValues: {
       interests: [],
@@ -66,6 +67,7 @@ export default function page() {
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
+
   return (
     <main className="bg-[#FDF7FD] min-h-screen">
       <div className="bg-[url('/bg3.svg')] bgimg3 bg-cover min-h-screen bg-no-repeat">
