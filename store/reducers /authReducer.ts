@@ -8,7 +8,7 @@ import {
 
 const initialState: AuthState = {
   activepage: "Home",
-  network: "Nillion/Polygon",
+  network: "Nillion/Diam",
   address: "",
 };
 

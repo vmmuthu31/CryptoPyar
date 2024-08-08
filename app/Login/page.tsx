@@ -49,7 +49,7 @@ export default function Page() {
 
                     <span>
                       {(() => {
-                        if (selectedNetwork === "Nillion/Polygon") {
+                        if (selectedNetwork === "Polygon") {
                           return (
                             <ConnectButton.Custom>
                               {({
@@ -126,7 +126,7 @@ export default function Page() {
                               }}
                             </ConnectButton.Custom>
                           );
-                        } else if (selectedNetwork === "Diam") {
+                        } else if (selectedNetwork === "Nillion/Diam") {
                           return (
                             <div className="flex flex-col items-center gap-4">
                               <input

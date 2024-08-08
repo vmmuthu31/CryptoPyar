@@ -29,9 +29,9 @@ export default function Header() {
           value={network}
           onChange={handleNetworkChange}
         >
-          <option value="Nillion/Polygon">Polygon</option>
-          <option value="Diam">Nillion/Diam</option>
+          <option value="Nillion/Diam">Nillion/Diam</option>
           <option value="Aptos">Aptos</option>
+          <option value="Polygon">Polygon</option>
         </select>
         <Link href="/Login">
           <button className="text-white bg-[#F24E80] px-4 py-2 rounded-full">
