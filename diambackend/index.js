@@ -177,6 +177,10 @@ app.post("/mint-nft", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "diamante API is working" });
+});
+
 app.listen(port, () => {
   console.log(`Diamante backend listening at http://localhost:${port}`);
 });
