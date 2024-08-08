@@ -121,6 +121,8 @@ const SignUp = () => {
   const { connect, account, connected } = useWallet();
   useEffect(() => {
     if (connected && account?.address) {
+      console.log("aptos connected", connected);
+      console.log("account add", account?.address);
       handleWalletConnect(account.address);
     }
   }, [connected, account]);
@@ -166,7 +168,7 @@ const SignUp = () => {
   useEffect(() => {
     console.log("Anon Aadhaar status: ", anonAadhaar.status);
     if (anonAadhaar.status === "logged-in") {
-      setCurrentStep(2);
+      setCurrentStep(1);
     }
   }, [anonAadhaar]);
 
@@ -263,7 +265,7 @@ const SignUp = () => {
                             : "Please log in with Anon Aadhaar to move ahead."}
                         </p>
 
-                        {anonAadhaar.status !== "logged-in" ? (
+                        {anonAadhaar.status === "logged-in" ? (
                           <span className="flex justify-center">
                             {(() => {
                               if (selectedNetwork === "Nillion/Polygon") {
@@ -667,15 +669,14 @@ const SignUp = () => {
                         </div>
                       </>
                     )}
-                    {currentStep === 1 &&
-                      anonAadhaar.status === "logged-in" && (
-                        <button
-                          onClick={() => setCurrentStep(2)}
-                          className="bg-[#F24E80] block mx-auto mt-5 text-white text-lg w-72 px-7 py-4 rounded-full"
-                        >
-                          Continue
-                        </button>
-                      )}
+                    {currentStep === 1 && selectedNetwork === "Diam" && (
+                      <button
+                        onClick={() => setCurrentStep(2)}
+                        className="bg-[#F24E80] block mx-auto mt-5 text-white text-lg w-72 px-7 py-4 rounded-full"
+                      >
+                        Continue
+                      </button>
+                    )}
 
                     {currentStep > 1 && (
                       <button
