@@ -24,6 +24,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ProgressBar from "../Components/ProgressBar";
 import { IoMaleSharp } from "react-icons/io5";
 import { PiGenderFemaleBold } from "react-icons/pi";
+import axios from "axios"
+
 
 const steps = [
   "What's Your Name?",
@@ -84,13 +86,46 @@ const SignUp = () => {
 
   const router = useRouter();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1);
     } else {
       console.log("Form data submitted: ", data);
-      toast.success("Form submitted successfully!");
-      router.push("/Home");
+      const address = localStorage.getItem("address");
+      console.log("address",address);
+      
+      try {
+        const queryurl = 'https://nillion-compute.vercel.app/create/'
+        const res = await axios.post(queryurl,{
+          
+            "address": address,
+            "name": data.name,
+            "photo": ["https://example.com/photo1.jpg", "https://example.com/photo2.jpg"],
+            "location": "india",
+            "gender": data.gender,
+            "age": data.age,
+            "interest": data.interests,
+            "liked": 0,
+            "looking_for": "female",
+            "overall": 85,
+            "bio": "Software developer with a passion for open source projects.",
+            "work": "Software Engineer at TechCorp",
+            "edu": "Bachelor of Engineering in Computer Science",
+            "zodiac": "Aries",
+            "isonmatch": true
+        
+        })
+
+        if(res.status === 201){
+          toast.success("Form submitted successfAully!");
+          router.push("/Home");
+        }
+      } catch (error) {
+        toast.error("Error Submitting Form")
+        console.log("error",error);
+        
+      }
+  
     }
   };
 
@@ -110,6 +145,7 @@ const SignUp = () => {
   };
 
   return (
+
     <main className="bg-[#FDF7FD] min-h-screen">
       <div className="bg-[url('/bg2.svg')] bgimg2 bg-cover min-h-screen bg-no-repeat">
         <ToastContainer />
@@ -367,7 +403,7 @@ const SignUp = () => {
                   </div>
                 </>
               )}
-
+<p>wwffsd</p>
               <button
                 type="submit"
                 className="bg-[#F24E80] block mx-auto mt-5 text-white text-lg w-72 px-7 py-4 rounded-full"
@@ -379,6 +415,7 @@ const SignUp = () => {
         </div>
       </div>
     </main>
+
   );
 };
 

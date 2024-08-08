@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import story1 from "../assets/story1.svg";
 import story2 from "../assets/story2.svg";
 import story3 from "../assets/story3.svg";
@@ -10,8 +10,70 @@ import Image from "next/image";
 import SideBar from "../Components/SideBar";
 import Tabs from "../Components/Tabs";
 import Suggestions from "../Components/Suggestions";
+import axios from "axios"
 
+const ProfileCard = ({ profile }) => {
+  return (
+      <div className="profile-card">
+          <h2>{profile.name}</h2>
+          <p>{profile.bio}</p>
+          <p>Age: {profile.age}</p>
+          <p>Location: {profile.location}</p>
+          <p>Gender: {profile.gender}</p>
+          <p>Looking for: {profile.looking_for}</p>
+          <p>Work: {profile.work}</p>
+          <p>Education: {profile.edu}</p>
+          <p>Zodiac: {profile.zodiac}</p>
+          <p>Interests: {profile.interest.join(', ')}</p>
+          <div className="photos">
+              {profile.photo.map((photoUrl, index) => (
+                  <img key={index} src={photoUrl} alt={`${profile.name} ${index + 1}`} />
+              ))}
+          </div>
+      </div>
+  );
+};
+
+const ProfileList = ({ profiles }) => {
+  return (
+      <div className="profile-list">
+          {profiles.map((profileData, index) => (
+              <ProfileCard key={index} profile={profileData.profile} />
+          ))}
+      </div>
+  );
+};
 export default function Page() {
+
+  const [address, setaddress] = useState("")
+  const [datas, setDatas] = useState([])
+
+  const getMatch  = async()=>{
+    try {
+      const data = localStorage.getItem("address")
+      console.log("Address",data);
+      
+
+      const queryurl = `https://nillion-compute.vercel.app/match/${data}`
+
+      const resdata = await axios.get(queryurl);
+
+      console.log("resdata",resdata);
+      setDatas(resdata.data)
+      
+    } catch (error) {
+      console.log("error in getting datra",error);
+      
+    }
+  }
+
+  useEffect(()=>{
+const data = localStorage.getItem("address")
+setaddress(data);
+getMatch()
+
+  },[])
+
   return (
     <main className="bg-[#FDF7FD] min-h-screen">
       <div className="bg-[url('/bg3.svg')] bgimg3 bg-cover min-h-screen bg-no-repeat">
@@ -47,7 +109,9 @@ export default function Page() {
                 <p>Fabian</p>
               </div>
             </div>
-            <Tabs />
+           {/* {datas &&  } */}
+        {  datas.length > 0 &&  <Tabs data={datas} />}
+
           </div>
           <Suggestions />
         </div>
