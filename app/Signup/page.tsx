@@ -120,9 +120,15 @@ const SignUp = () => {
   const [, latestProof] = useProver();
   const { connect, account, connected } = useWallet();
   useEffect(() => {
+    console.log("aptos connected", connected);
+    console.log("account add", account?.address);
+
     if (connected && account?.address) {
-      console.log("aptos connected", connected);
-      console.log("account add", account?.address);
+      handleWalletConnect(account.address);
+    }
+  }, []);
+  useEffect(() => {
+    if (connected && account?.address) {
       handleWalletConnect(account.address);
     }
   }, [connected, account]);
@@ -295,6 +301,10 @@ const SignUp = () => {
 
                                         useEffect(() => {
                                           if (connected) {
+                                            console.log(
+                                              "ethadd",
+                                              account.address
+                                            );
                                             handleWalletConnect(
                                               account.address
                                             );
@@ -368,9 +378,6 @@ const SignUp = () => {
                                                   type="button"
                                                 >
                                                   {account.displayName}
-                                                  {/* {account.displayBalance
-                                                    ?  (${account.displayBalance})
-                                                    : ""} */}
                                                 </button>
                                               </div>
                                             )}
