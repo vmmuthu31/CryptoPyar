@@ -21,14 +21,18 @@ const config = getDefaultConfig({
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 import { LogInWithAnonAadhaar, useAnonAadhaar } from "@anon-aadhaar/react";
+import { useRouter } from "next/navigation";
 
 const queryClient = new QueryClient();
 
 export default function page() {
   const [anonAadhaar] = useAnonAadhaar();
-
+  const router = useRouter();
   useEffect(() => {
     console.log("Anon Aadhaar status: ", anonAadhaar.status);
+    if (anonAadhaar.status === "logged-in") {
+      router.push("/Home");
+    }
   }, [anonAadhaar]);
   return (
     <WagmiProvider config={config}>
@@ -44,109 +48,110 @@ export default function page() {
                   <p className="text-2xl w-60 text-center py-10 font-semibold">
                     Let’s meeting new people around you
                   </p>
-                  <button className="bg-[#F24E80] flex justify-center gap-10 items-center mt-5 text-white text-lg  w-72  py-4 rounded-full">
-                    <RiWallet3Fill className="text-[#F24E80] bg-white px-2 rounded-full text-4xl" />
-                    <span>
-                      {" "}
-                      <ConnectButton.Custom>
-                        {({
-                          account,
-                          chain,
-                          openAccountModal,
-                          openChainModal,
-                          openConnectModal,
-                          authenticationStatus,
-                          mounted,
-                        }) => {
-                          const ready =
-                            mounted && authenticationStatus !== "loading";
-                          const connected =
-                            ready &&
-                            account &&
-                            chain &&
-                            (!authenticationStatus ||
-                              authenticationStatus === "authenticated");
 
-                          return (
-                            <>
-                              {(() => {
-                                if (!connected) {
-                                  return (
+                  <span>
+                    {" "}
+                    <ConnectButton.Custom>
+                      {({
+                        account,
+                        chain,
+                        openAccountModal,
+                        openChainModal,
+                        openConnectModal,
+                        authenticationStatus,
+                        mounted,
+                      }) => {
+                        const ready =
+                          mounted && authenticationStatus !== "loading";
+                        const connected =
+                          ready &&
+                          account &&
+                          chain &&
+                          (!authenticationStatus ||
+                            authenticationStatus === "authenticated");
+
+                        return (
+                          <>
+                            {(() => {
+                              if (!connected) {
+                                return (
+                                  <>
                                     <button
                                       onClick={openConnectModal}
-                                      type="button"
+                                      className="bg-[#F24E80] flex justify-center gap-10 items-center mt-5 text-white text-lg  w-72  py-4 rounded-full"
                                     >
+                                      <RiWallet3Fill className="text-[#F24E80] bg-white px-2 rounded-full text-4xl" />
                                       Login with Wallet{" "}
                                     </button>
-                                  );
-                                }
-
-                                if (chain.unsupported) {
-                                  return (
-                                    <button
-                                      onClick={openChainModal}
-                                      type="button"
-                                    >
-                                      Wrong network
-                                    </button>
-                                  );
-                                }
-
-                                return (
-                                  <div style={{ display: "flex", gap: 12 }}>
-                                    <button
-                                      onClick={openChainModal}
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                      }}
-                                      type="button"
-                                    >
-                                      {chain.hasIcon && (
-                                        <div
-                                          style={{
-                                            background: chain.iconBackground,
-                                            width: 12,
-                                            height: 12,
-                                            borderRadius: 999,
-                                            overflow: "hidden",
-                                            marginRight: 4,
-                                          }}
-                                        >
-                                          {chain.iconUrl && (
-                                            <img
-                                              alt={chain.name ?? "Chain icon"}
-                                              src={chain.iconUrl}
-                                              style={{ width: 12, height: 12 }}
-                                            />
-                                          )}
-                                        </div>
-                                      )}
-                                      {chain.name}
-                                    </button>
-
-                                    <button
-                                      onClick={openAccountModal}
-                                      type="button"
-                                    >
-                                      {account.displayName}
-                                      {account.displayBalance
-                                        ? ` (${account.displayBalance})`
-                                        : ""}
-                                    </button>
-                                  </div>
+                                  </>
                                 );
-                              })()}
-                            </>
-                          );
-                        }}
-                      </ConnectButton.Custom>
-                    </span>
-                  </button>
+                              }
+
+                              if (chain.unsupported) {
+                                return (
+                                  <button
+                                    onClick={openChainModal}
+                                    type="button"
+                                  >
+                                    Wrong network
+                                  </button>
+                                );
+                              }
+
+                              return (
+                                <div style={{ display: "flex", gap: 12 }}>
+                                  <button
+                                    onClick={openChainModal}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                    }}
+                                    type="button"
+                                  >
+                                    {chain.hasIcon && (
+                                      <div
+                                        style={{
+                                          background: chain.iconBackground,
+                                          width: 12,
+                                          height: 12,
+                                          borderRadius: 999,
+                                          overflow: "hidden",
+                                          marginRight: 4,
+                                        }}
+                                      >
+                                        {chain.iconUrl && (
+                                          <img
+                                            alt={chain.name ?? "Chain icon"}
+                                            src={chain.iconUrl}
+                                            style={{ width: 12, height: 12 }}
+                                          />
+                                        )}
+                                      </div>
+                                    )}
+                                    {chain.name}
+                                  </button>
+
+                                  <button
+                                    onClick={openAccountModal}
+                                    type="button"
+                                  >
+                                    {account.displayName}
+                                    {account.displayBalance
+                                      ? ` (${account.displayBalance})`
+                                      : ""}
+                                  </button>
+                                </div>
+                              );
+                            })()}
+                          </>
+                        );
+                      }}
+                    </ConnectButton.Custom>
+                  </span>
                   <button className="bg-[#FFF0FD] flex justify-between items-center mt-5 text-[#F24E80] text-lg w-72 px-7 py-4 rounded-full">
                     <LogInWithAnonAadhaar
                       nullifierSeed={1234}
-                      fieldsToReveal={["revealAgeAbove18", "revealPinCode"]}
+                      fieldsToReveal={["revealAgeAbove18", "revealState"]}
                     />
                     <p>{anonAadhaar?.status}</p>
                   </button>
