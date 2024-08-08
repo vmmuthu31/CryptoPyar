@@ -72,7 +72,7 @@ export default function page() {
         <div className="flex mx-14 pl-12 py-20 pt-14 justify-between">
           <SideBar />
           <div className="w-[560px] h-[720px] hide-scrollbar overflow-y-scroll">
-            <div className="flex pl-10 justify-between ">
+            <div className="flex pl-10 items-center justify-between ">
               <div className="flex flex-col items-start">
                 <div className="flex items-center gap-1">
                   <FaLocationDot className="text-[#DD88CF] text-sm" />
