@@ -98,6 +98,11 @@ export default function Page() {
                                 );
                               }
 
+                              if(connected){
+                                console.log("hi");
+                                localStorage.setItem("address",account.address)
+                              }
+
                               return (
                                 <div style={{ display: "flex", gap: 12 }}>
                                   <button

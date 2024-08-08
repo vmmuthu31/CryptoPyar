@@ -15,12 +15,15 @@ const users = [
   { id: 4, name: "Fabian", age: 24, location: "Bangalore", image: user4 },
 ];
 
-const Tabs = () => {
+const Tabs = (data) => {
   const [activeTab, setActiveTab] = useState("Search Partners");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [favorites, setFavorites] = useState([]);
   const [rotation, setRotation] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState("");
+
+  const [datum, setDatum] = useState(data)
+
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -53,6 +56,12 @@ const Tabs = () => {
     trackMouse: true,
   });
 
+  console.log("data",data);
+console.log("type", typeof(data));
+
+  console.log("datum",datum);
+  
+
   return (
     <div>
       <div className="flex justify-center">
@@ -73,9 +82,9 @@ const Tabs = () => {
       <div className="mt-6">
         {activeTab === "Search Partners" && (
           <div className="relative flex flex-col items-center">
-            {users.slice(currentIndex, currentIndex + 3).map((user, index) => (
+            { data.lenght > 0 &&  data.profile.map((user, index) => (
               <div
-                key={user.id}
+                key={user.uuid}
                 className={`absolute w-[380px] rounded-3xl h-[450px] mt-6 bg-white shadow-lg flex items-center justify-center transform transition-transform duration-300 ${
                   index === 0 && swipeDirection
                     ? `translate-x-${
@@ -85,16 +94,16 @@ const Tabs = () => {
                 } ${index === 0 ? "" : "rotate-6"}`}
                 {...(index === 0 ? swipeHandlers : {})}
                 style={{
-                  zIndex: users.length - index,
+                  zIndex: data.length - index,
                   transform: `rotate(${index === 0 ? rotation : 6}deg)`,
                   overflow: "hidden",
                 }}
               >
-                <Image
-                  src={user.image}
-                  alt={user.name}
+                {/* <Image
+                  src={user.profile.image}
+                  alt={user.profile.name}
                   className="object-cover w-full h-full"
-                />
+                /> */}
                 <div className="absolute top-5 right-2 p-2 rounded-full ">
                   <p className="text-[#F24E80] bg-white text-[14px] p-2 rounded-full font-semibold">
                     View Profile
@@ -131,7 +140,19 @@ const Tabs = () => {
             <Image src={event} alt="Event" />
           </div>
         )}
+
+
       </div>
+
+
+<div>
+  <p>hello</p>
+{/* <p>{datum.map((Data)=>(
+  <p>{Data.match_percentage}</p>
+))}</p> */}
+</div>
+
+
     </div>
   );
 };
