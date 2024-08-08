@@ -89,3 +89,44 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.wallet-info-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.wallet-info-button {
+  display: flex;
+  align-items: center;
+  background-color: #f24e80;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.wallet-info-button:hover {
+  background-color: #e04070;
+}
+
+.wallet-icon {
+  background: #ffffff;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-icon img {
+  width: 100%;
+  height: 100%;
+}

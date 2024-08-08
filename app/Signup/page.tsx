@@ -137,6 +137,9 @@ const SignUp = () => {
     return wallets.map((wallet) => {
       console.log("wallet", wallet);
       const walletName = wallet.name;
+      if (connected && account?.address) {
+        handleWalletConnect(account.address);
+      }
       return (
         <button
           key={walletName}

@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import logingrp from "../assets/logingrp.svg";
 import { RiWallet3Fill } from "react-icons/ri";
-import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import "@rainbow-me/rainbowkit/styles.css";
 import { WalletConnector } from "@aptos-labs/wallet-adapter-mui-design";
@@ -89,37 +88,20 @@ export default function Page() {
                                         Wrong network
                                       </button>
                                     ) : (
-                                      <div style={{ display: "flex", gap: 12 }}>
+                                      <div className="wallet-info-container">
                                         <button
                                           onClick={openChainModal}
-                                          style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                          }}
+                                          className="wallet-info-button"
                                           type="button"
                                         >
                                           {chain.hasIcon && (
-                                            <div
-                                              style={{
-                                                background:
-                                                  chain.iconBackground,
-                                                width: 12,
-                                                height: 12,
-                                                borderRadius: 999,
-                                                overflow: "hidden",
-                                                marginRight: 4,
-                                              }}
-                                            >
+                                            <div className="wallet-icon">
                                               {chain.iconUrl && (
                                                 <img
                                                   alt={
                                                     chain.name ?? "Chain icon"
                                                   }
                                                   src={chain.iconUrl}
-                                                  style={{
-                                                    width: 12,
-                                                    height: 12,
-                                                  }}
                                                 />
                                               )}
                                             </div>
@@ -129,6 +111,7 @@ export default function Page() {
 
                                         <button
                                           onClick={openAccountModal}
+                                          className="wallet-info-button"
                                           type="button"
                                         >
                                           {account.displayName}
