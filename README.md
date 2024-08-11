@@ -11,8 +11,7 @@ CryptoPyar is a blockchain-powered dating platform that ensures user privacy and
 5. [How to Get Started](#how-to-get-started)
 6. [How It Works](#how-it-works)
 7. [Future Roadmap](#future-roadmap)
-8. [Contributing](#contributing)
-9. [License](#license)
+
 
 ### **Features**
 - **100% Privacy:** User data is encrypted and stored on-chain, ensuring complete control over personal information.
